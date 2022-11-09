@@ -92,8 +92,8 @@ contract ElementaryCellularAutomaton is ERC721URIStorage, ERC2981
             uint currentStateStartIndex = index;
             for (col = 0; col < sideSize; col++)
             {
-                uint leftIndex = col == 0 ? sideSize : col - 1;
-                uint rightIndex = col == sideSize ? 0 : col + 1;
+                uint leftIndex = col == 0 ? sideSize - 1 : col - 1;
+                uint rightIndex = col == (sideSize - 1) ? 0 : col + 1;
 
                 uint ruleMask = output[previousStateStartIndex + leftIndex] == ALIVE ? 1 : 0;
                 ruleMask <<= 1;
