@@ -5,6 +5,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 import streamlit as st
 from urllib.request import urlopen
+from jinja2 import Template
 
 load_dotenv()
 
@@ -48,10 +49,16 @@ if st.button("Draw"):
     draw_size = (1 << size_type) - 1
     state_mask = (1 << draw_size) - 1
     token_id = ((state & state_mask) << 16) | (rule << 8) | size_type
-    st.write(f"Drawing {token_id}")
+    st.write(f"Drawing token id {token_id}")
     token_uri = contract.functions.tokenURI(token_id).call()
 
+    st.write(f"Open automaton.html for a stylized rendering")
     with urlopen(token_uri) as response:
         data = response.read()
         s = data.decode('utf-8')
         st.code(s)
+        with open('jinja/template.html') as f:
+            template = Template(f.read())
+
+        with open('automaton.html', 'w') as f:
+            f.write(template.render(data=s))
