@@ -2,20 +2,29 @@
 pragma solidity ^0.8.12;
 
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v4.7/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v4.7/contracts/token/common/ERC2981.sol";
 
 
-contract ElementaryCellularAutomaton is ERC721URIStorage
+contract ElementaryCellularAutomaton is ERC721URIStorage, ERC2981
 {
     uint public constant BASE_PRICE = 10000000 gwei;
+    uint96 public constant ROYALTY = 250;
+
+    bytes constant PREFIX = "data:text/plain;charset=utf-8,";
     bytes1 constant DEAD = 0x2E; // '.'
     bytes1 constant ALIVE = 0x2B; // '+'
 
-    bytes constant PREFIX = "data:text/plain;charset=utf-8,";
     address _owner;
+
+    function supportsInterface(bytes4 interfaceId) public view virtual override(ERC721, ERC2981) returns (bool)
+    {
+        return super.supportsInterface(interfaceId);
+    }
 
     constructor() ERC721("ElementaryCellularAutomaton", "ECA")
     {
         _owner = msg.sender;
+        _setDefaultRoyalty(_owner, ROYALTY);
     }
 
     function salePrice(uint8 sizeType) public pure returns (uint)
@@ -38,6 +47,8 @@ contract ElementaryCellularAutomaton is ERC721URIStorage
 
         _safeMint(msg.sender, tokenID);
         _setTokenURI(tokenID, draw(rule, actualState, sideSize));
+        (bool sent, bytes memory data) = _owner.call{value: msg.value}("");
+        require(sent, "Failed to send Ether");
         return tokenID;
     }
 
