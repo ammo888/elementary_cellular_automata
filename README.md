@@ -22,7 +22,7 @@ State encodes bit by bit the "dead" (0) or "alive" (1) initial state. The number
 Size type ranges from 1 to 5. The number of bits of state used is `1 << SizeType - 1`. This also determines how many generations are calculated for the artwork. Each artwork is square in shape.
 
 | Size Type | Side Size |
-| --------- | --------- |
+| :-------: | :-------: |
 |     1     |     1     |
 |     2     |     3     |
 |     3     |     7     |
