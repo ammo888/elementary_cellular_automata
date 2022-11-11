@@ -81,4 +81,5 @@ rule=105, state=143341353, size type=5
 [automaton.ttf](font/automaton.ttf) encodes the `.` (dead) and `+` (alive) ASCII representations into a white and black boxes to make the art look pretty!
 
 ![example_automaton.png](examples/example_automaton.png)
+
 [example_automaton.html](examples/example_automaton.html)
