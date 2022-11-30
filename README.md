@@ -83,3 +83,24 @@ rule=105, state=143341353, size type=5
 ![example_automaton.png](examples/example_automaton.png)
 
 [example_automaton.html](examples/example_automaton.html)
+
+## Usage
+
+### Python Prerequisites
+- web3
+- python-dotenv
+- streamlit
+- jinja2
+
+### Deploy Contract
+1. Compile [contracts/automaton.sol](contracts/automaton.sol) with solidity version 0.8.12
+2. Deploy to chain of choice
+
+### Run Frontend
+1. Populate a `.env` file with `WEB_PROVIDER_URI` pointing to the web3 provider and hex formatted contract address `CONTRACT_ADDRESS`
+2. `streamlit run app.py`
+![streamlit](examples/streamlit.png)
+3. Choose automata parameters rule, initial state, size type
+4. Click "Generate artwork" and wait for transaction completion
+5. Click "Draw"
+6. Open [automaton.html](automaton.html) in browser - this file is overwritten on Draw
