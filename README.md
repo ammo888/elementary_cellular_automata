@@ -1,6 +1,6 @@
 # Elementary Cellular Automata (ECA) NFT
 
-Inspired by [Autoglyphs](https://www.larvalabs.com/autoglyphs), the ECA NFT project combines the purity of on-chain artwork with the beauty of [elementary cellular automata](https://en.wikipedia.org/wiki/Elementary_cellular_automaton).
+Inspired by [Autoglyphs](https://www.larvalabs.com/autoglyphs), the ECA NFT project combines the purity of on-chain artwork with the beauty of [elementary cellular automata](https://en.wikipedia.org/wiki/Elementary_cellular_automaton). This contract is an [ERC-2981](https://eips.ethereum.org/EIPS/eip-2981) with a 2.5% royalty.
 
 ## Background
 ECA is a one-dimensional cellular automaton, where cells that can be in a "dead" or "alive" state live on a line. The next generation of these cells are determined by a rule which determine a cell's fate based on its state and its neighbors'.
