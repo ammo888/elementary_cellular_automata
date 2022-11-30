@@ -98,9 +98,10 @@ rule=105, state=143341353, size type=5
 
 ### Run Frontend
 1. Populate a `.env` file with `WEB_PROVIDER_URI` pointing to the web3 provider and hex formatted contract address `CONTRACT_ADDRESS`
-2. `streamlit run app.py`
+2. Copy generated ABI to [abi.json](abi.json) (current ABI already there)
+3. `streamlit run app.py`
 ![streamlit](examples/streamlit.png)
-3. Choose automata parameters rule, initial state, size type
-4. Click "Generate artwork" and wait for transaction completion
-5. Click "Draw"
-6. Open [automaton.html](automaton.html) in browser - this file is overwritten on Draw
+4. Choose automata parameters rule, initial state, size type
+5. Click "Generate artwork" and wait for transaction completion
+6. Click "Draw"
+7. Open [automaton.html](automaton.html) in browser - this file is overwritten on Draw
